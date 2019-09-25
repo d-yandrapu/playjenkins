@@ -14,6 +14,12 @@ pipeline {
         git 'https://github.com/justmeandopensource/playjenkins.git'
       }
     }
+    stage('Docker initialize'){
+      steps {
+        def dockerHome = tool 'docker'
+        env.PATH = "${dockerHome}/bin:${env.PATH}"
+      }
+    }
 
     stage('Build image') {
       steps{
